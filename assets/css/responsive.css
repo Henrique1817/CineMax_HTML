@@ -1,0 +1,445 @@
+/* Responsive Styles */
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .movies-grid,
+    .upcoming-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .promotions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile Large */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--secondary-color);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 2rem 0;
+        gap: 1rem;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .hero {
+        background-attachment: scroll;
+        height: 80vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    .movies-section,
+    .upcoming-section,
+    .promotions-section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+    
+    .section-title::after {
+        width: 60px;
+    }
+    
+    .movies-grid,
+    .upcoming-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .movie-poster img {
+        height: 350px;
+    }
+    
+    .movie-info {
+        padding: 1.2rem;
+    }
+    
+    .movie-title {
+        font-size: 1.2rem;
+    }
+    
+    .movie-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .promotions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .promotion-card {
+        padding: 1.5rem;
+    }
+    
+    .promotion-icon {
+        font-size: 2.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 0 10px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .user-menu {
+        right: 15px;
+        min-width: 180px;
+    }
+}
+
+/* Mobile Small */
+@media screen and (max-width: 480px) {
+    .nav-logo h2 {
+        font-size: 1.3rem;
+    }
+    
+    .nav-logo i {
+        font-size: 1.5rem;
+    }
+    
+    .nav-actions {
+        gap: 0.5rem;
+    }
+    
+    .search-btn,
+    .user-btn,
+    .cart-btn {
+        font-size: 1rem;
+        padding: 6px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .movies-grid,
+    .upcoming-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .movie-card {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    
+    .movie-poster img {
+        height: 400px;
+    }
+    
+    .movie-info {
+        padding: 1rem;
+    }
+    
+    .promotion-card {
+        padding: 1.2rem;
+    }
+    
+    .promotion-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .promotion-icon {
+        font-size: 2rem;
+    }
+    
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 1.1rem;
+    }
+    
+    .modal-content {
+        padding: 1.2rem;
+    }
+    
+    .modal h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .form-group input {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .form-btn {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .nav-container {
+        padding: 0 10px;
+    }
+}
+
+/* Extra Small Mobile */
+@media screen and (max-width: 360px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .movie-poster img {
+        height: 350px;
+    }
+    
+    .promotion-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .cta-button,
+    .btn-primary,
+    .btn-secondary,
+    .load-more-btn {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Landscape orientation fixes for mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        height: 100vh;
+        background-attachment: scroll;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-button {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .movies-section,
+    .upcoming-section,
+    .promotions-section {
+        padding: 40px 0;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero {
+        background-image: 
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url('https://images.unsplash.com/photo-1489599856906-352bcaa36b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=4140&q=80');
+    }
+}
+
+/* Print styles */
+@media print {
+    .header,
+    .hero,
+    .nav-actions,
+    .user-menu,
+    .modal,
+    .loading,
+    .movie-actions,
+    .promotion-card,
+    .footer {
+        display: none !important;
+    }
+    
+    .movies-section,
+    .upcoming-section {
+        padding: 20px 0;
+    }
+    
+    .movie-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .section-title {
+        color: #000;
+        font-size: 1.5rem;
+    }
+    
+    .movie-title {
+        color: #000;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .hero {
+        background-attachment: scroll;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .modal-content {
+        background-color: var(--secondary-color);
+        color: var(--light-color);
+    }
+    
+    .form-group input {
+        background-color: #333;
+        color: var(--light-color);
+        border-color: #555;
+    }
+    
+    .form-group input:focus {
+        border-color: var(--primary-color);
+    }
+    
+    .close {
+        color: var(--light-color);
+    }
+    
+    .modal h2 {
+        color: var(--light-color);
+    }
+}
+
+/* Focus styles for better accessibility */
+button:focus,
+.nav-link:focus,
+.btn-primary:focus,
+.btn-secondary:focus,
+input:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .btn-primary,
+    .form-btn {
+        border: 2px solid;
+    }
+    
+    .movie-card {
+        border: 2px solid var(--text-color);
+    }
+    
+    .promotion-card {
+        border: 2px solid var(--primary-color);
+    }
+}

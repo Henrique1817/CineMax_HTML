@@ -1,0 +1,307 @@
+  /* Estilos específicos para página de promoções */
+        .promotion-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-color);
+            position: relative;
+        }
+
+        .promotion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .promotion-card.expired {
+            opacity: 0.6;
+            border-top-color: #ccc;
+        }
+
+        .promotion-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .promotion-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .promotion-discount-badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .promotion-content {
+            padding: 20px;
+        }
+
+        .promotion-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .promotion-content p {
+            color: var(--gray-color);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .promotion-details {
+            margin-bottom: 20px;
+        }
+
+        .promotion-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .promotion-detail i {
+            color: var(--primary-color);
+            width: 16px;
+        }
+
+        .promotion-validity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .promotion-actions {
+            margin-top: 20px;
+        }
+
+        .membership-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .membership-hero {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .membership-info h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .membership-info p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            margin-bottom: 30px;
+        }
+
+        .membership-benefits {
+            margin-bottom: 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .benefit-item i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .membership-card {
+            background: linear-gradient(135deg, var(--primary-color), #ff4757);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
+            transform: perspective(600px) rotateY(-15deg);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .card-body {
+            margin-bottom: 20px;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .member-points {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card-footer {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .upcoming-promo-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border: 2px dashed #ddd;
+        }
+
+        .upcoming-promo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .upcoming-promo-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .upcoming-promo-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .upcoming-promo-card p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .upcoming-date {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .newsletter-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .newsletter-info {
+            flex: 1;
+        }
+
+        .newsletter-info h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-info p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            flex: 1;
+        }
+
+        .newsletter-form .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 12px 20px;
+            white-space: nowrap;
+        }
+
+        .newsletter-terms {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .membership-hero {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .membership-card {
+                transform: none;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .newsletter-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .newsletter-form .form-group {
+                flex-direction: column;
+            }
+
+            .newsletter-form button {
+                align-self: center;
+            }
+        }

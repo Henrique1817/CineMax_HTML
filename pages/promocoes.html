@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoções - CineMax</title>
+    <link rel="stylesheet" href="../assets/css/style-optimized.css">
+    <link rel="stylesheet" href="../assets/css/promocao.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="../index.html">
+                        <h2><i class="fas fa-film"></i> CineMax</h2>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="filmes.html" class="nav-link">Filmes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="programacao.html" class="nav-link">Programação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="promocoes.html" class="nav-link active">Promoções</a>
+                    </li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                    <button class="user-btn" onclick="toggleUserMenu()">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- User Menu Dropdown -->
+        <div class="user-menu" id="userMenu">
+            <div class="user-menu-item" onclick="openModal('loginModal')">
+                <i class="fas fa-sign-in-alt"></i> Entrar
+            </div>
+            <div class="user-menu-item" onclick="openModal('registerModal')">
+                <i class="fas fa-user-plus"></i> Cadastrar
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" style="margin-top: 70px; padding: 60px 0; background: linear-gradient(135deg, #e50914, #ff4757); color: white; text-align: center;">
+        <div class="container">
+            <h1>Promoções Especiais</h1>
+            <p>Aproveite nossas ofertas imperdíveis e economize!</p>
+        </div>
+    </section>
+
+    <!-- Active Promotions -->
+    <section class="promotions-section" style="padding: 60px 0;">
+        <div class="container">
+            <h2 class="section-title">Promoções Ativas</h2>
+            <div class="promotions-grid" id="promotionsGrid">
+                <!-- Promoções serão carregadas dinamicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Program -->
+    <section class="membership-section" style="padding: 60px 0; background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Programa de Fidelidade CineMax Plus</h2>
+            <div class="membership-content">
+                <div class="membership-hero">
+                    <div class="membership-info">
+                        <h3>Torne-se um membro CineMax Plus</h3>
+                        <p>Acumule pontos, ganhe descontos exclusivos e tenha acesso a pré-estreias!</p>
+                        <div class="membership-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-star"></i>
+                                <span>Acumule 1 ponto a cada R$ 1,00 gasto</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-gift"></i>
+                                <span>Troque pontos por ingressos gratuitos</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-crown"></i>
+                                <span>Acesso exclusivo a pré-estreias</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>Desconto especial no seu aniversário</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="joinMembership()">
+                            Cadastre-se Gratuitamente
+                        </button>
+                    </div>
+                    <div class="membership-visual">
+                        <div class="membership-card">
+                            <div class="card-header">
+                                <i class="fas fa-film"></i>
+                                <span>CineMax Plus</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="member-name">Seu Nome</div>
+                                <div class="member-points">0 pontos</div>
+                            </div>
+                            <div class="card-footer">
+                                <span>Membro desde 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Promotions -->
+    <section class="upcoming-promotions-section" style="padding: 60px 0;">
+        <div class="container">
+            <h2 class="section-title">Próximas Promoções</h2>
+            <div class="upcoming-promotions" id="upcomingPromotions">
+                <!-- Próximas promoções serão carregadas dinamicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Subscription -->
+    <section class="newsletter-section" style="padding: 60px 0; background: var(--secondary-color); color: white;">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-info">
+                    <h2>Não Perca Nenhuma Promoção!</h2>
+                    <p>Cadastre-se em nossa newsletter e seja o primeiro a saber sobre ofertas exclusivas, lançamentos e eventos especiais.</p>
+                </div>
+                <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                    <div class="form-group">
+                        <input type="email" placeholder="Seu melhor e-mail" required>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Inscrever-se
+                        </button>
+                    </div>
+                    <div class="newsletter-terms">
+                        <small>Ao se inscrever, você concorda em receber e-mails promocionais. Você pode cancelar a qualquer momento.</small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-film"></i> CineMax</h3>
+                    <p>A melhor experiência cinematográfica da cidade</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="filmes.html">Filmes</a></li>
+                        <li><a href="programacao.html">Programação</a></li>
+                        <li><a href="promocoes.html">Promoções</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> (11) 3333-4444</p>
+                        <p><i class="fas fa-envelope"></i> contato@cinemax.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Rua do Cinema, 123</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 CineMax. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Entrar</h2>
+            <form class="modal-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <input type="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Senha" required>
+                </div>
+                <button type="submit" class="form-btn">Entrar</button>
+                <div class="form-links">
+                    <a href="#" onclick="openModal('registerModal'); closeModal('loginModal')">
+                        Não tem conta? Cadastre-se
+                    </a>
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Cadastrar</h2>
+            <form class="modal-form" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Senha" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Confirmar senha" required>
+                </div>
+                <button type="submit" class="form-btn">Cadastrar</button>
+                <div class="form-links">
+                    <a href="#" onclick="openModal('loginModal'); closeModal('registerModal')">
+                        Já tem conta? Entre aqui
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Scripts (ordem padronizada com index.html) -->
+    <script src="../assets/js/movies-data.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/main-optimized.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPromotions();
+            loadUpcomingPromotions();
+            updateCartCount();
+            updateAuthInterface();
+        });
+
+        function loadPromotions() {
+            const promotionsGrid = document.getElementById('promotionsGrid');
+            const activePromotions = MOVIES_DATABASE.promotions.filter(promo => promo.active);
+            
+            promotionsGrid.innerHTML = activePromotions.map(promotion => createPromotionCard(promotion)).join('');
+        }
+
+        function createPromotionCard(promotion) {
+            const isValid = MovieDataUtils.isPromotionValid(promotion.id);
+            const validUntil = new Date(promotion.validUntil).toLocaleDateString('pt-BR');
+            
+            return `
+                <div class="promotion-card ${!isValid ? 'expired' : ''}">
+                    <div class="promotion-header">
+                        <div class="promotion-icon">
+                            <i class="fas fa-${promotion.icon}"></i>
+                        </div>
+                        <div class="promotion-discount-badge">
+                            ${typeof promotion.discount === 'number' ? promotion.discount + '% OFF' : promotion.discount}
+                        </div>
+                    </div>
+                    
+                    <div class="promotion-content">
+                        <h3>${promotion.title}</h3>
+                        <p>${promotion.description}</p>
+                        
+                        <div class="promotion-details">
+                            ${promotion.dayOfWeek ? `<div class="promotion-detail">
+                                <i class="fas fa-calendar-day"></i>
+                                <span>Válido apenas às ${getDayName(promotion.dayOfWeek)}s</span>
+                            </div>` : ''}
+                            
+                            ${promotion.timeRestriction ? `<div class="promotion-detail">
+                                <i class="fas fa-clock"></i>
+                                <span>Sessões até ${promotion.timeRestriction}</span>
+                            </div>` : ''}
+                            
+                            ${promotion.minimumTickets ? `<div class="promotion-detail">
+                                <i class="fas fa-ticket-alt"></i>
+                                <span>Mínimo ${promotion.minimumTickets} ingressos</span>
+                            </div>` : ''}
+                            
+                            <div class="promotion-validity">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Válido até ${validUntil}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="promotion-actions">
+                            <button class="btn-primary" onclick="usePromotion(${promotion.id})">
+                                ${promotion.requiresValidation ? 'Saiba Mais' : 'Usar Promoção'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getDayName(dayNumber) {
+            const days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+            return days[dayNumber] || 'Dia';
+        }
+
+        function loadUpcomingPromotions() {
+            const upcomingPromotions = document.getElementById('upcomingPromotions');
+            
+            // Simular próximas promoções
+            const upcoming = [
+                {
+                    title: "Black Friday Cinema",
+                    description: "50% de desconto em todos os ingressos durante a Black Friday!",
+                    startDate: "2025-11-29",
+                    icon: "tags"
+                },
+                {
+                    title: "Natal no Cinema",
+                    description: "Promoção especial de Natal - compre 2 e leve 3 ingressos",
+                    startDate: "2025-12-20",
+                    icon: "gift"
+                },
+                {
+                    title: "Ano Novo, Cinema Novo",
+                    description: "Primeira semana do ano com preços promocionais",
+                    startDate: "2026-01-01",
+                    icon: "fireworks"
+                }
+            ];
+            
+            upcomingPromotions.innerHTML = `
+                <div class="upcoming-grid">
+                    ${upcoming.map(promo => `
+                        <div class="upcoming-promo-card">
+                            <div class="upcoming-promo-icon">
+                                <i class="fas fa-${promo.icon}"></i>
+                            </div>
+                            <h4>${promo.title}</h4>
+                            <p>${promo.description}</p>
+                            <div class="upcoming-date">
+                                <i class="fas fa-calendar"></i>
+                                Inicia em ${new Date(promo.startDate).toLocaleDateString('pt-BR')}
+                            </div>
+                            <button class="btn-secondary" onclick="setReminder('${promo.title}')">
+                                <i class="fas fa-bell"></i>
+                                Lembrar-me
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function usePromotion(promotionId) {
+            const promotion = MOVIES_DATABASE.promotions.find(p => p.id === promotionId);
+            if (!promotion) return;
+            
+            if (promotion.requiresValidation) {
+                showMessage(`Para usar a promoção "${promotion.title}", apresente sua carteirinha na bilheteria ou selecione a opção durante a compra online.`, 'info');
+            } else {
+                showMessage(`Promoção "${promotion.title}" será aplicada automaticamente quando as condições forem atendidas!`, 'success');
+            }
+        }
+
+        function joinMembership() {
+            if (!authSystem.isAuthenticated()) {
+                showMessage('Faça login para se cadastrar no programa de fidelidade', 'warning');
+                openModal('loginModal');
+                return;
+            }
+            
+            showMessage('Parabéns! Você foi cadastrado no CineMax Plus. Comece a acumular pontos em suas próximas compras!', 'success');
+        }
+
+        function setReminder(promoTitle) {
+            if (!authSystem.isAuthenticated()) {
+                showMessage('Faça login para receber lembretes', 'warning');
+                openModal('loginModal');
+                return;
+            }
+            
+            showMessage(`Lembrete configurado! Você será notificado quando a promoção "${promoTitle}" começar.`, 'success');
+        }
+
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            
+            // Simular inscrição na newsletter
+            showLoading();
+            
+            setTimeout(() => {
+                hideLoading();
+                showMessage('Obrigado por se inscrever! Você receberá nossas ofertas exclusivas em breve.', 'success');
+                event.target.reset();
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

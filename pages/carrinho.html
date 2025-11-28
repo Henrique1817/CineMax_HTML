@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - CineMax</title>
+    <link rel="stylesheet" href="../assets/css/style-optimized.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="../index.html">
+                        <h2><i class="fas fa-film"></i> CineMax</h2>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="filmes.html" class="nav-link">Filmes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="programacao.html" class="nav-link">Programação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="promocoes.html" class="nav-link">Promoções</a>
+                    </li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                    <button class="user-btn" onclick="toggleUserMenu()">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="cart-btn" onclick="window.location.href='carrinho.html'">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- User Menu Dropdown -->
+        <div class="user-menu" id="userMenu">
+            <div class="user-menu-item" onclick="openModal('loginModal')">
+                <i class="fas fa-sign-in-alt"></i> Entrar
+            </div>
+            <div class="user-menu-item" onclick="openModal('registerModal')">
+                <i class="fas fa-user-plus"></i> Cadastrar
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" style="margin-top: 70px; padding: 60px 0; background: linear-gradient(135deg, #e50914, #ff4757); color: white; text-align: center;">
+        <div class="container">
+            <h1><i class="fas fa-shopping-cart"></i> Meu Carrinho</h1>
+            <p>Revise seus ingressos e finalize a compra</p>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <section class="cart-section" style="padding: 60px 0; min-height: 60vh;">
+        <div class="container">
+            <!-- Empty Cart -->
+            <div class="empty-cart" id="emptyCart" style="display: none;">
+                <div class="empty-cart-content">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Seu carrinho está vazio</h2>
+                    <p>Adicione alguns filmes ao seu carrinho para continuar</p>
+                    <a href="filmes.html" class="btn-primary">
+                        <i class="fas fa-film"></i>
+                        Ver Filmes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cart with Items -->
+            <div class="cart-content" id="cartContent">
+                <div class="cart-layout">
+                    <!-- Cart Items -->
+                    <div class="cart-items">
+                        <div class="cart-header">
+                            <h2>Seus Ingressos</h2>
+                            <button class="clear-cart-btn" onclick="clearCart()">
+                                <i class="fas fa-trash"></i>
+                                Limpar Carrinho
+                            </button>
+                        </div>
+                        
+                        <div class="cart-items-list" id="cartItemsList">
+                            <!-- Items serão carregados dinamicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Cart Summary -->
+                    <div class="cart-summary">
+                        <div class="summary-card">
+                            <h3><i class="fas fa-receipt"></i> Resumo do Pedido</h3>
+                            
+                            <div class="summary-details" id="summaryDetails">
+                                <!-- Detalhes serão carregados dinamicamente -->
+                            </div>
+
+                            <!-- Coupon Section -->
+                            <div class="coupon-section">
+                                <h4><i class="fas fa-tag"></i> Cupom de Desconto</h4>
+                                <div class="coupon-input">
+                                    <input type="text" id="couponCode" placeholder="Digite o código do cupom">
+                                    <button class="apply-coupon-btn" onclick="applyCoupon()">
+                                        Aplicar
+                                    </button>
+                                </div>
+                                <div class="applied-coupons" id="appliedCoupons">
+                                    <!-- Cupons aplicados aparecerão aqui -->
+                                </div>
+                            </div>
+
+                            <!-- Total Section -->
+                            <div class="total-section">
+                                <div class="total-line subtotal">
+                                    <span>Subtotal:</span>
+                                    <span id="subtotalAmount">R$ 0,00</span>
+                                </div>
+                                <div class="total-line discount" id="discountLine" style="display: none;">
+                                    <span>Desconto:</span>
+                                    <span id="discountAmount">-R$ 0,00</span>
+                                </div>
+                                <div class="total-line taxes">
+                                    <span>Taxa de conveniência:</span>
+                                    <span id="taxAmount">R$ 0,00</span>
+                                </div>
+                                <div class="total-line final-total">
+                                    <strong>
+                                        <span>Total:</span>
+                                        <span id="totalAmount">R$ 0,00</span>
+                                    </strong>
+                                </div>
+                            </div>
+
+                            <!-- Checkout Button -->
+                            <button class="checkout-btn" onclick="proceedToCheckout()" id="checkoutBtn">
+                                <i class="fas fa-credit-card"></i>
+                                Finalizar Compra
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div class="modal checkout-modal" id="checkoutModal">
+        <div class="modal-content checkout-content">
+            <span class="close" onclick="closeModal('checkoutModal')">&times;</span>
+            <div class="checkout-header">
+                <h2><i class="fas fa-credit-card"></i> Finalizar Compra</h2>
+                <div class="checkout-steps">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Dados Pessoais</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Pagamento</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Confirmação</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-body" id="checkoutBody">
+                <!-- Conteúdo será carregado dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal success-modal" id="successModal">
+        <div class="modal-content success-content">
+            <div class="success-animation">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Compra Realizada com Sucesso!</h2>
+            <p>Seus ingressos foram enviados para o seu e-mail</p>
+            <div class="purchase-details" id="purchaseDetails">
+                <!-- Detalhes da compra -->
+            </div>
+            <div class="success-actions">
+                <button class="btn-primary" onclick="downloadTickets()">
+                    <i class="fas fa-download"></i>
+                    Baixar Ingressos
+                </button>
+                <button class="btn-secondary" onclick="closeModal('successModal'); window.location.href='../index.html'">
+                    Voltar ao Início
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-film"></i> CineMax</h3>
+                    <p>A melhor experiência cinematográfica da cidade</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="filmes.html">Filmes</a></li>
+                        <li><a href="programacao.html">Programação</a></li>
+                        <li><a href="promocoes.html">Promoções</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> (11) 3333-4444</p>
+                        <p><i class="fas fa-envelope"></i> contato@cinemax.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Rua do Cinema, 123</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 CineMax. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Entrar</h2>
+            <form class="modal-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <input type="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Senha" required>
+                </div>
+                <button type="submit" class="form-btn">Entrar</button>
+                <div class="form-links">
+                    <a href="#" onclick="openModal('registerModal'); closeModal('loginModal')">
+                        Não tem conta? Cadastre-se
+                    </a>
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Cadastrar</h2>
+            <form class="modal-form" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Senha" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Confirmar senha" required>
+                </div>
+                <button type="submit" class="form-btn">Cadastrar</button>
+                <div class="form-links">
+                    <a href="#" onclick="openModal('loginModal'); closeModal('registerModal')">
+                        Já tem conta? Entre aqui
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/movies-data.js"></script>
+    <script src="../assets/js/main-optimized.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/cart.js"></script>
+</body>
+</html>
