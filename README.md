@@ -4,25 +4,25 @@ Um projeto completo de cinema desenvolvido em HTML5, CSS3 e JavaScript ES6+, inc
 
 ## ✨ Funcionalidades Implementadas
 
-### 🛒 **NOVO: Sistema de Carrinho Completo!**
+### 🧩 Visão Geral do Sistema
 
-**Acabei de implementar um sistema de carrinho de compras completo para o projeto do cinema! Aqui estão os destaques:**
+- **Catálogo de Filmes**: carregado de `assets/js/movies-data.js` com pôster, sinopse, classificação e trailers.
+- **Filtros Inteligentes**: por gênero, nota mínima e busca textual (título, diretor, elenco).
+- **Paginação Incremental**: botão "Carregar Mais" gerenciado por `main-optimized.js`.
+- **Autenticação Simulada**: login/registro com interface e estado em `auth.js`.
+- **Carrinho Completo**: `cart.js` com itens, quantidade, cupons, checkout e persistência em LocalStorage.
+- **Programação de Sessões**: dados de salas, horários e precificação dinâmica.
+- **Promoções**: regras configuráveis e validações (dia, horário, quantidade).
+- **Responsividade**: CSS otimizado e componentes adaptativos.
 
-#### **Funcionalidades do Carrinho:**
-- ✅ **Gerenciamento Completo**: Adicionar, remover, atualizar quantidades
-- ✅ **Sistema de Cupons**: 5 cupons diferentes (DESCONTO10, PRIMEIRA, ESTUDANTE, VIP30, FRETE)
-- ✅ **Checkout em 3 Etapas**: Dados pessoais → Pagamento → Confirmação
-- ✅ **Múltiplas Formas de Pagamento**: Cartão, PIX, parcelamento
-- ✅ **Cálculos Precisos**: Subtotal, desconto, taxa, total
-- ✅ **Persistência**: LocalStorage para manter itens
-- ✅ **Integração**: Com sistema de autenticação existente
-
-#### **Como Testar:**
-1. Navegue pelos filmes e clique em "Comprar"
-2. Acesse `pages/carrinho.html` para ver o carrinho
-3. Teste cupons: DESCONTO10, PRIMEIRA, ESTUDANTE, VIP30, FRETE
-4. Complete o checkout simulado
-5. Veja a confirmação de pedido
+### 🛒 Carrinho de Compras (Detalhes)
+- **Ações**: adicionar/remover, alterar quantidade, limpar carrinho.
+- **Cupons**: `DESCONTO10`, `PRIMEIRA`, `ESTUDANTE`, `VIP30`, `FRETE`.
+- **Checkout**: 3 etapas (Dados → Pagamento → Confirmação).
+- **Pagamentos**: cartão, PIX, parcelamento (simulado).
+- **Cálculos**: subtotal, descontos, taxas, total final com arredondamento.
+- **Persistência**: LocalStorage, integração com autenticação.
+- **Como testar**: abrir `pages/filmes.html`, clicar "Comprar" e revisar em `pages/carrinho.html`.
 
 ### 🚀 Como Rodar Localmente
 
@@ -100,6 +100,9 @@ Você também pode usar a extensão "Live Server" para abrir o `index.html` com 
 - **Bibliotecas Externas**:
   - Font Awesome para ícones
   - Google Fonts (Roboto) para tipografia
+ - **Ferramentas de Desenvolvimento**:
+   - `http-server` via npm para servir o site (`npm run dev`/`npm start`)
+   - VS Code + extensão Live Server (opcional)
 
 ## 🎭 Funcionalidades por Página
 
@@ -119,6 +122,7 @@ Você também pode usar a extensão "Live Server" para abrir o `index.html` com 
   - Busca por título, diretor ou elenco
 - Paginação com "Carregar Mais"
 - Cards informativos com poster, sinopse e classificação
+ - Tratamento de imagens: fallback automático para placeholder se o pôster falhar
 
 ### 📅 **Programação (programacao.html)**
 - Seletor de datas (próximos 7 dias)
@@ -208,6 +212,13 @@ Você também pode usar a extensão "Live Server" para abrir o `index.html` com 
 - Relatórios de vendas
 - Gerenciamento de usuários
 - Configuração de promoções
+
+### 5. **Melhorias Técnicas Planejadas**
+- Migrar pôsteres para caminho absoluto `/assets/...` e remover helper de resolução.
+- Separar dados em JSON e carregar via fetch (mock), melhorando manutenção.
+- Adicionar testes unitários básicos para utilitários (preço, promoções).
+- Otimizar imagens (WebP/AVIF), gerar thumbnails e lazy loading avançado.
+- Automatizar build (Vite/Parcel) para minificação e cache busting.
 
 ## 🔧 Configuração e Customização
 
