@@ -242,6 +242,7 @@
 
     <!-- Scripts (ordem padronizada com index.html) -->
     <script src="../assets/js/movies-data.js"></script>
+    <script src="../assets/js/filme.js"></script>
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/cart.js"></script>
     <script src="../assets/js/main-optimized.js"></script>
@@ -309,10 +310,22 @@
             const ratingFilter = document.getElementById('ratingFilter').value;
             const searchFilter = document.getElementById('searchFilter').value.toLowerCase();
             
+            // Normaliza strings para comparação insensível a acentos e espaços
+            const normalizeSlug = (str) => {
+                if (!str) return '';
+                return str
+                    .toString()
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/\p{Diacritic}/gu, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/[^a-z0-9\-]/g, '');
+            };
+            
             filteredMovies = MOVIES_DATABASE.currentMovies.filter(movie => {
-                // Filtro de gênero
-                const genreMatch = genreFilter === 'all' || 
-                                   movie.genre.toLowerCase().includes(genreFilter.replace('-', ' '));
+                // Filtro de gênero (insensível a acento e espaços)
+                const movieGenreSlug = normalizeSlug(movie.genre);
+                const genreMatch = genreFilter === 'all' || movieGenreSlug === genreFilter || movieGenreSlug.includes(genreFilter);
                 
                 // Filtro de classificação
                 const ratingMatch = ratingFilter === 'all' || 
@@ -323,7 +336,7 @@
                                     movie.title.toLowerCase().includes(searchFilter) ||
                                     movie.description.toLowerCase().includes(searchFilter) ||
                                     movie.director.toLowerCase().includes(searchFilter) ||
-                                    movie.cast.some(actor => actor.toLowerCase().includes(searchFilter));
+                                    (Array.isArray(movie.cast) && movie.cast.some(actor => actor.toLowerCase().includes(searchFilter)));
                 
                 return genreMatch && ratingMatch && searchMatch;
             });

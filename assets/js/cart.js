@@ -275,6 +275,16 @@ function loadCartItems() {
     cartItemsList.innerHTML = items.map(item => createCartItemHTML(item)).join('');
 }
 
+// Resolve caminho de imagem/asset para funcionar em páginas dentro de /pages/
+function resolveAssetPath(path) {
+    if (!path) return '';
+    if (path.startsWith('assets/')) {
+        const needsParent = window.location.pathname.includes('/pages/');
+        return (needsParent ? '../' : '') + path;
+    }
+    return path;
+}
+
 function createCartItemHTML(item) {
     const itemTotal = item.price * item.quantity;
     const formattedDate = new Date(item.date).toLocaleDateString('pt-BR');
@@ -282,7 +292,7 @@ function createCartItemHTML(item) {
     return `
         <div class="cart-item" data-item-id="${item.id}">
             <div class="item-image">
-                <img src="${item.poster}" alt="${item.title}">
+                <img src="${resolveAssetPath(item.poster)}" alt="${item.title}">
             </div>
             
             <div class="item-details">

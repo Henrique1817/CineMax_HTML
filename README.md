@@ -1,203 +1,176 @@
-# 🎬 CineMax - Sistema Completo de Cinema
+# 🎬 CineMax — Sistema Completo de Cinema
 
-Um projeto completo de cinema desenvolvido em HTML5, CSS3 e JavaScript ES6+, incluindo sistema de autenticação, catálogo de filmes, programação de sessões, promoções e **carrinho de compras completo**.
+Projeto web de cinema em HTML5, CSS3 e JavaScript ES6+. Inclui autenticação simulada, catálogo de filmes, programação, promoções e um **carrinho de compras completo** com persistência em LocalStorage.
 
-## ✨ Funcionalidades Implementadas
+## ✨ Destaques
 
-### 🧩 Visão Geral do Sistema
+- **Catálogo de Filmes** a partir de `assets/js/movies-data.js`.
+- **Filtros Inteligentes** por gênero, nota mínima e busca textual.
+- **Carrinho Completo** em `assets/js/cart.js` com cupons, totais e checkout.
+- **Programação de Sessões** com precificação por sala/horário.
+- **Promoções** com regras e validações (dia, horário, quantidade).
+- **Responsivo** com CSS otimizado para dispositivos variados.
 
-- **Catálogo de Filmes**: carregado de `assets/js/movies-data.js` com pôster, sinopse, classificação e trailers.
-- **Filtros Inteligentes**: por gênero, nota mínima e busca textual (título, diretor, elenco).
-- **Paginação Incremental**: botão "Carregar Mais" gerenciado por `main-optimized.js`.
-- **Autenticação Simulada**: login/registro com interface e estado em `auth.js`.
-- **Carrinho Completo**: `cart.js` com itens, quantidade, cupons, checkout e persistência em LocalStorage.
-- **Programação de Sessões**: dados de salas, horários e precificação dinâmica.
-- **Promoções**: regras configuráveis e validações (dia, horário, quantidade).
-- **Responsividade**: CSS otimizado e componentes adaptativos.
+## 🚀 Como Rodar
 
-### 🛒 Carrinho de Compras (Detalhes)
-- **Ações**: adicionar/remover, alterar quantidade, limpar carrinho.
-- **Cupons**: `DESCONTO10`, `PRIMEIRA`, `ESTUDANTE`, `VIP30`, `FRETE`.
-- **Checkout**: 3 etapas (Dados → Pagamento → Confirmação).
-- **Pagamentos**: cartão, PIX, parcelamento (simulado).
-- **Cálculos**: subtotal, descontos, taxas, total final com arredondamento.
-- **Persistência**: LocalStorage, integração com autenticação.
-- **Como testar**: abrir `pages/filmes.html`, clicar "Comprar" e revisar em `pages/carrinho.html`.
-
-### 🚀 Como Rodar Localmente
-
-#### Opção recomendada (Node + npm)
-Requer Node.js instalado.
+Requer Node.js para os scripts do `package.json`. Alternativas sem Node incluídas.
 
 ```powershell
-# Instalar dependências (apenas na primeira vez)
+# Instalar dependências
 npm install
 
-# Servidor de desenvolvimento com auto-reload
-npm run dev
-# Acesse: http://localhost:5173/
+# Dev server (auto-reload)
+npm run dev ; # http://localhost:5173/
 
-# Servidor simples (porta 8080)
-npm start
-# Acesse: http://localhost:8080/
+# Servidor simples
+npm start ; # http://localhost:8080/
 ```
 
-#### Alternativas (sem Node)
+Sem Node:
+
 ```powershell
-# Python 3 (Windows)
+# Python (Windows)
 py -3 -m http.server 8000
-# ou
-python -m http.server 8000
 
 # PHP
 php -S localhost:8000
 ```
 
-#### Dica (VS Code)
-Você também pode usar a extensão "Live Server" para abrir o `index.html` com hot reload.
+Dica (VS Code): use a extensão "Live Server" para abrir `index.html`.
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura
 
 ```
 .
 ├── index.html
-├── IMAGENS-CORRIGIDAS.md
-├── OTIMIZACOES.md
-├── README.md
 ├── package.json
+├── README.md
 ├── assets/
 │   ├── css/
-│   │   ├── promocao.css
-│   │   ├── responsive.css
-│   │   └── style-optimized.css
+│   │   ├── cart.css             # Estilos dedicados do carrinho
+│   │   ├── promocao.css         # Estilos das promoções (bordas pontilhadas)
+│   │   ├── responsive.css       # Ajustes responsivos
+│   │   └── style-optimized.css  # Estilos globais
 │   ├── images/
 │   ├── js/
-│   │   ├── auth.js            # Autenticação (simulada)
-│   │   ├── cart.js            # Carrinho (novo)
-│   │   ├── main-optimized.js  # Funcionalidades principais
-│   │   └── movies-data.js     # Base de dados/config
+│   │   ├── auth.js              # Autenticação (simulada)
+│   │   ├── cart.js              # Lógica do carrinho
+│   │   ├── filme.js             # Filtros e catálogo
+│   │   ├── main-optimized.js    # UI geral e helpers
+│   │   └── movies-data.js       # Base de dados/config
 │   └── videos/
 └── pages/
-  ├── carrinho.html         # Carrinho e checkout
-  ├── filmes.html           # Catálogo de filmes
-  ├── programacao.html      # Grade de horários
-  └── promocoes.html        # Promoções
+    ├── carrinho.html            # Carrinho e checkout
+    ├── filmes.html              # Catálogo de filmes
+    ├── programacao.html         # Grade de horários
+    └── promocoes.html           # Promoções
 ```
 
-## 🎨 Tecnologias Utilizadas
+## 🛒 Carrinho de Compras
 
-- **HTML5**: Estrutura semântica e moderna
-- **CSS3**: 
-  - Flexbox e CSS Grid para layouts responsivos
-  - Animações e transições suaves
-  - Variáveis CSS para tema consistente
-  - Media queries para responsividade
-- **JavaScript (ES6+)**:
-  - Classes e modules
-  - Local Storage para persistência de dados
-  - Event handling avançado
-  - Programação orientada a objetos
-- **Bibliotecas Externas**:
-  - Font Awesome para ícones
-  - Google Fonts (Roboto) para tipografia
- - **Ferramentas de Desenvolvimento**:
-   - `http-server` via npm para servir o site (`npm run dev`/`npm start`)
-   - VS Code + extensão Live Server (opcional)
+- **Ações**: adicionar/remover, alterar quantidade, limpar carrinho.
+- **Cupons**: `DESCONTO10`, `PRIMEIRA`, `ESTUDANTE`, `VIP30`, `FRETE`.
+- **Checkout** em etapas: Dados → Pagamento → Confirmação.
+- **Cálculos**: subtotal, descontos, taxas, total final.
+- **Persistência**: LocalStorage; sem login para adicionar, login exigido no checkout.
+- **Contador**: badge vermelha centralizada via `.cart-count` em `style-optimized.css`.
 
-## 🎭 Funcionalidades por Página
+Como testar: abra `pages/filmes.html`, clique em "Comprar" e confira o carrinho em `pages/carrinho.html`.
 
-### 🏠 **Página Inicial (index.html)**
-- Hero section com banner atrativo
-- Grid de filmes em cartaz
-- Seção de próximos lançamentos
-- Cards de promoções especiais
-- Sistema de notificações
-- Menu de navegação responsivo
+## 🎥 Catálogo e Filtros
 
-### 🎥 **Catálogo de Filmes (filmes.html)**
-- Lista completa de filmes disponíveis
-- Filtros por:
-  - Gênero (Ação, Ficção Científica, Drama, etc.)
-  - Classificação por estrelas
-  - Busca por título, diretor ou elenco
-- Paginação com "Carregar Mais"
-- Cards informativos com poster, sinopse e classificação
- - Tratamento de imagens: fallback automático para placeholder se o pôster falhar
+- Filtros por gênero, nota mínima e busca.
+- Normalização de gênero (sem acentos/espaços) para correspondência robusta.
+- Cards com pôster, sinopse e classificação; fallback para placeholder se a imagem falhar.
 
-### 📅 **Programação (programacao.html)**
-- Seletor de datas (próximos 7 dias)
-- Grade de horários por filme e sala
-- Informações de salas (IMAX, 3D, 4DX, etc.)
-- Disponibilidade de assentos em tempo real
-- Preços dinâmicos baseados em horário e tipo de sala
+## 📅 Programação
 
-### 🎁 **Promoções (promocoes.html)**
-- Sistema de promoções ativas
-- Programa de fidelidade "CineMax Plus"
-- Newsletter para ofertas exclusivas
-- Promoções futuras com sistema de lembretes
+- Seletor de datas: próximos 7 dias gerados a partir de hoje.
+- Salas e horários com preços dinâmicos por tipo (Standard, 3D, IMAX, Premium, 4DX).
+- Correção de caminhos de imagens quando acessado via `pages/`.
 
-## 🔐 Sistema de Autenticação
+## 🎁 Promoções
 
-### Funcionalidades de Login
-- **Registro de usuários** com validação de dados
-- **Login seguro** com hash de senha (simulado)
-- **Sessão persistente** com timeout automático
-- **Menu de usuário** com opções personalizadas
-- **Histórico de compras** e favoritos
+- Bordas pontilhadas em `promocao.css` (`border: 2px dashed #ddd`).
+- Estilos de hover e cards dedicados.
 
-### Dados Armazenados
-- Informações do perfil do usuário
-- Histórico de compras
-- Filmes favoritos
-- Preferências de notificação
+## 🔐 Autenticação (Simulada)
 
-## 🛒 Sistema de E-commerce
+- Registro/login com persistência básica.
+- Sessão salva em LocalStorage.
+- Login exigido apenas na etapa de checkout.
 
-### Carrinho de Compras
-- Adição/remoção de ingressos
-- Cálculo automático de preços
-- Aplicação de promoções
-- Persistência no Local Storage
+## 🎨 UI e Responsividade
 
-### Cálculo de Preços
-- Preço base por filme
-- Multiplicadores por tipo de sala:
-  - Standard: 1.0x
-  - 3D: 1.3x
-  - IMAX: 1.5x
-  - Premium: 1.8x
-  - 4DX: 2.0x
-- Ajustes por horário e dia da semana
-- Aplicação automática de promoções
+- Título/logo com cor e tamanho padronizados em todas as páginas.
+- `nav` mantido como no design original; espaçamento ajustado apenas no logo.
+- Badge de carrinho centralizada e dimensionada.
+- CSS responsivo com Grid/Flex e media queries.
 
-## 📱 Design Responsivo
+## 🔧 Helpers Importantes
 
-### Breakpoints
-- **Mobile Small**: até 360px
-- **Mobile Large**: até 480px
-- **Tablet**: até 768px
-- **Desktop Small**: até 1024px
-- **Desktop Large**: 1200px+
+- `resolveImagePath` e `resolveAssetPath` para corrigir caminhos ao navegar em `pages/`.
+- `updateCartCount` para atualizar o contador no topo.
 
-### Adaptações por Dispositivo
-- **Menu hamburger** em telas menores
-- **Grid flexível** para cards de filmes
-- **Typography scaling** responsiva
-- **Touch-friendly** buttons e interações
-- **Optimized images** para diferentes densidades
+## 🧪 Solução de Problemas
 
-## 🎯 Próximos Passos de Desenvolvimento
+- **Imagens não aparecem em `pages/*`**: use helpers de resolução de caminho ao definir `src`.
+- **Botão do carrinho não abre página**: `main-optimized.js` ajusta a rota conforme o local atual.
+- **Filtro de gênero falha**: normalize o valor antes de comparar.
+- **Badge desalinhada**: ver `.cart-count` em `style-optimized.css`.
 
-### 1. **Sistema de Reserva de Assentos**
-- Mapa visual da sala de cinema
-- Seleção interativa de assentos
-- Diferentes categorias (normal, premium, deficiente)
-- Validação de disponibilidade em tempo real
+## 📦 Scripts do `package.json`
 
-### 2. **Página de Detalhes do Filme**
-- Informações completas do filme
-- Galeria de imagens e trailers
+- `npm run dev`: servidor com auto-reload (Vite/http-server, conforme config).
+- `npm start`: servidor simples na porta 8080.
+
+## 🗺️ Próximos Passos
+
+- Reserva visual de assentos com seleção interativa.
+- Página detalhada do filme com galeria e trailers.
+
+## 📄 Licença
+
+Projeto para fins educacionais/demonstração.
+
+## 🔀 Fluxo de Arquivos
+
+- **`index.html`**: carrega estilos globais e `assets/js/main-optimized.js` para navbar, cards iniciais e contador do carrinho.
+- **`pages/filmes.html`**: usa `assets/js/filme.js` (filtros, renderização) e helpers de `main-optimized.js`; ações de “Comprar” chamam `CartSystem.addItem` em `assets/js/cart.js`.
+- **`pages/carrinho.html`**: estilizado por `assets/css/cart.css`; popula itens, totais e checkout via `assets/js/cart.js` (escuta `cartUpdated`).
+- **`pages/programacao.html`**: renderiza grade e imagens com `resolveAssetPath`/`resolveImagePath` de `main-optimized.js`, dados de `movies-data.js`.
+- **`pages/promocoes.html`**: estilos em `assets/css/promocao.css` (bordas pontilhadas e hovers).
+- **`assets/js/movies-data.js`**: fonte única para filmes, salas, preços e metadados.
+- **`assets/js/auth.js`**: autenticação simulada; login exigido apenas ao finalizar compra.
+- **Comunicação**: `cart.js` dispara `CustomEvent('cartUpdated')`; `main-optimized.js` atualiza o badge via `updateCartCount`.
+
+### Diagrama
+
+```mermaid
+flowchart LR
+    A[index.html] --> B(main-optimized.js)
+    B --> C[movies-data.js]
+    B --> D[auth.js]
+    B -->|updateCartCount| E((Badge Carrinho))
+
+    F[pages/filmes.html] --> G(filme.js)
+    G --> B
+    G --> C
+    G -->|Comprar| H{{CartSystem.addItem}}
+    H --> I[cart.js]
+    I --> J[(LocalStorage)]
+    I -->|dispatch cartUpdated| K{{cartUpdated}}
+
+    L[pages/carrinho.html] --> I
+    L --> M[cart.css]
+    K --> L
+
+    N[pages/programacao.html] --> B
+    N --> C
+    B -->|resolveImagePath/resolveAssetPath| N
+
+    O[pages/promocoes.html] --> P[promocao.css]
+```
 - Sistema de avaliações e comentários
 - Integração com APIs de filmes (TMDB)
 

@@ -77,7 +77,10 @@ function setupTopBarInteractions() {
     if (cartBtn) {
         cartBtn.style.cursor = 'pointer';
         cartBtn.addEventListener('click', () => {
-            window.location.href = 'pages/carrinho.html';
+            // Resolver caminho correto tanto da home quanto de /pages/
+            const inPagesDir = window.location.pathname.includes('/pages/');
+            const target = inPagesDir ? 'carrinho.html' : 'pages/carrinho.html';
+            window.location.href = target;
         });
     }
 
@@ -243,12 +246,8 @@ function addToCart(movieId, event) {
         event.stopPropagation();
     }
     
-    // Verificar autenticação
-    if (!isUserAuthenticated()) {
-        showMessage('Faça login para comprar ingressos', 'warning');
-        openModal('loginModal');
-        return;
-    }
+    // Permitir adicionar ao carrinho mesmo sem login; exigir login apenas no checkout
+    // Mantemos a experiência mais fluida: usuário pode montar o carrinho e logar depois.
     
     // Encontrar o filme
     const movie = AppState.movies.current.find(m => m.id === movieId);
@@ -263,6 +262,10 @@ function addToCart(movieId, event) {
         if (success) {
             showMessage(`${movie.title} adicionado ao carrinho!`, 'success');
             updateCartCount();
+            // Sugerir login apenas informativamente
+            if (!isUserAuthenticated()) {
+                console.log('🔒 Usuário não autenticado: login será solicitado no checkout.');
+            }
         }
     } else {
         // Fallback simples

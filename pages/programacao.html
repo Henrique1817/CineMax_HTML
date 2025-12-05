@@ -242,6 +242,15 @@
             updateAuthInterface();
         });
 
+        // Resolve caminho de assets para funcionar dentro de /pages/
+        function resolveAssetPath(path) {
+            if (!path) return '';
+            if (path.startsWith('assets/')) {
+                return '../' + path;
+            }
+            return path;
+        }
+
         function generateDateSelector() {
             const dateSelector = document.getElementById('dateSelector');
             const today = new Date();
@@ -338,7 +347,7 @@
             return `
                 <div class="session-card">
                     <div class="session-movie-info">
-                        <img src="${session.movie.poster}" alt="${session.movie.title}" class="session-poster">
+                        <img src="${resolveAssetPath(session.movie.poster)}" alt="${session.movie.title}" class="session-poster">
                         <div class="session-details">
                             <h3 class="session-title">${session.movie.title}</h3>
                             <div class="session-meta">
@@ -443,7 +452,7 @@
                 <h2>Reservar Ingresso</h2>
                 <div class="booking-summary">
                     <div class="booking-movie">
-                        <img src="${session.movie.poster}" alt="${session.movie.title}">
+                        <img src="${resolveAssetPath(session.movie.poster)}" alt="${session.movie.title}">
                         <div class="booking-details">
                             <h3>${session.movie.title}</h3>
                             <p><i class="fas fa-calendar"></i> ${session.date.toLocaleDateString('pt-BR')}</p>

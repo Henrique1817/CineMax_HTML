@@ -262,25 +262,6 @@ const MOVIES_DATABASE = {
             ageRating: "12",
             language: "Dublado/Legendado",
             country: "EUA"
-        },
-        {
-            id: 104,
-            title: "Batman: O Longo Dia das Bruxas",
-            genre: "Ação",
-            duration: "135 min",
-            rating: 0,
-            poster: "assets/images/batman.svg",
-            backdrop: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-            description: "Uma nova ameaça surge em Gotham City, testando os limites do Cavaleiro das Trevas.",
-            fullDescription: "Batman enfrenta uma série de assassinatos misteriosos que acontecem apenas em feriados. O Cavaleiro das Trevas deve trabalhar com o Comissário Gordon e o Promotor Harvey Dent para descobrir a identidade do serial killer conhecido como 'Holiday'.",
-            year: 2026,
-            director: "Matt Reeves",
-            cast: ["Robert Pattinson", "Zoë Kravitz", "Paul Dano", "Jeffrey Wright"],
-            releaseDate: "2026-06-15",
-            isInTheater: false,
-            ageRating: "14",
-            language: "Dublado/Legendado",
-            country: "EUA"
         }
     ],
     
